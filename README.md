@@ -59,4 +59,18 @@ Mencari private bug bounty program atau invited testing yang fokus pada IDOR dan
 
 ---
 
+## 📸 Bukti Pendukung
+
+### Email Bounty Kredivo
+
+![Bounty Kredivo](./Bounthy-kredivo.jpeg)
+
+### Piagam Pemerintah Provinsi Bali
+
+![Piagam Pemprov Bali](./piagam-bali.jpeg)
+
+> *Gambar telah diredaksi untuk melindungi informasi sensitif.*
+
+---
+
 *Semua laporan telah diredaksi untuk menghormati kebijakan program masing-masing. Bukti pendukung tersedia jika diperlukan.*
