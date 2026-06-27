@@ -1,76 +1,170 @@
-# 🔐 Bug Bounty Portfolio
+# Bug Bounty Portfolio
 
-**Handle:** Muhkhoirisma  
-**Fokus:** IDOR, Broken Access Control, Unauthenticated Endpoint  
+**Handle:** Muhkhoirisma
 
----
-
-## 📌 Tentang Saya
-
-Bug hunter dengan pengalaman melaporkan kerentanan keamanan ke program resmi (VDP & bug bounty), baik dari perusahaan swasta maupun instansi pemerintah.
+**Focus:** IDOR, Broken Access Control, API Security, Authorization Testing
 
 ---
 
-## 🏆 Pencapaian
+# 📌 About Me
 
-| # | Pencapaian | Keterangan |
-|---|------------|-------------|
-| 1 | **IDOR** – Platform Keuangan (Kredivo) | Kerentanan valid, diterima, dan diberikan bounty |
-| 2 | **Unauthenticated Access** – Pemerintah Provinsi Bali | Mendapat piagam resmi atas kontribusi keamanan sistem elektronik |
-| 3 | **Laporan ke NASA VDP** | Melaporkan temuan ke NASA Vulnerability Disclosure Program |
+Security researcher with experience reporting security vulnerabilities through official Vulnerability Disclosure Programs (VDP) and Bug Bounty platforms.
 
----
+My primary research areas include:
 
-## 🛠️ Studi Kasus
-
-### Kasus 1: IDOR di Endpoint Deprecated
-- **Target:** Platform keuangan (Kredivo)  
-- **Endpoint:** API lama yang masih aktif  
-- **Eksploitasi:** Perubahan parameter ID → akses data akun user lain  
-- **Dampak:** Kebocoran nama & email akun manajer perusahaan  
-- **Status:** ✅ Valid (diberikan bounty)
-
-### Kasus 2: Unauthenticated Access
-- **Target:** Sistem UMKM Pemerintah Provinsi Bali  
-- **Endpoint:** Fitur import produk  
-- **Eksploitasi:** Fitur bisa diakses tanpa login sama sekali  
-- **Dampak:** Potensi manipulasi data produk UMKM  
-- **Status:** ✅ Valid (mendapat piagam resmi)
+* Broken Access Control
+* Insecure Direct Object Reference (IDOR)
+* Authorization Testing
+* API Security
+* Business Logic Testing
 
 ---
 
-## 🧰 Tools
+# 🏆 Achievements
 
-- **Burp Suite** (Repeater, Intruder, Proxy)
-- **Dirsearch** (directory enumeration)
-- **Manual testing** (parameter ID, hidden endpoint, logic bug)
-
----
-
-## 🎯 Target Saat Ini
-
-Mencari private bug bounty program atau invited testing yang fokus pada IDOR dan broken access control.
+| # | Finding                                                   | Result                                                         |
+| - | --------------------------------------------------------- | -------------------------------------------------------------- |
+| 1 | **IDOR – Kredivo**                                        | ✅ Valid, accepted and rewarded                                 |
+| 2 | **Unauthenticated Endpoint – Bali Provincial Government** | ✅ Official Certificate of Appreciation                         |
+| 3 | **NASA Vulnerability Disclosure Program**                 | ✅ Security report submitted                                    |
+| 4 | **Broken Access Control – Agoda (HackerOne)**             | ✅ Valid vulnerability (Duplicate of previously reported issue) |
 
 ---
 
-## 📬 Kontak
+# 🛠 Case Studies
 
-**Email:** sad306391@gmail.com
+## Case 1 — IDOR in Deprecated API Endpoint
+
+**Target:** Kredivo
+
+**Category:** IDOR / Broken Access Control
+
+### Summary
+
+Identified an authorization flaw within a legacy API endpoint that remained accessible after migration.
+
+### Impact
+
+Changing the object identifier allowed unauthorized access to another user's account information.
+
+### Result
+
+* Accepted
+* Bounty awarded
 
 ---
 
-## 📸 Bukti Pendukung
+## Case 2 — Unauthenticated Endpoint
 
-### Email Bounty Kredivo
+**Target:** Bali Provincial Government
 
-![Bounty Kredivo](./Bounthy-kredivo.jpeg)
+**Category:** Authentication Bypass
 
-### Piagam Pemerintah Provinsi Bali
+### Summary
 
-![Piagam Pemprov Bali](./piagam-bali.jpeg)
+A product import functionality could be accessed without authentication.
 
-> *Gambar telah diredaksi untuk melindungi informasi sensitif.*
+### Impact
+
+Potential unauthorized manipulation of UMKM product data.
+
+### Result
+
+* Accepted
+* Official appreciation certificate awarded
 
 ---
 
-*Semua laporan telah diredaksi untuk menghormati kebijakan program masing-masing. Bukti pendukung tersedia jika diperlukan.*
+## Case 3 — Cross-Account Booking Information Disclosure
+
+**Target:** Agoda (HackerOne)
+
+**Category:** Broken Access Control / Missing Authorization
+
+### Summary
+
+During authorization testing using two researcher-controlled accounts, I identified that the booking status endpoint returned booking information based solely on a supplied **pollingToken** without validating ownership against the authenticated user session.
+
+Replacing the polling token of Account A with the polling token belonging to Account B caused the application to return booking information associated with Account B while remaining authenticated as Account A.
+
+The disclosed response included booking-related metadata such as:
+
+* Booking ID
+* Itinerary ID
+* Booking Status
+* Payment Session URL
+* Self-Service Booking URL
+
+Testing was performed exclusively using researcher-controlled accounts in accordance with the program policy.
+
+### Result
+
+**Status:** Duplicate
+
+The HackerOne triage team confirmed that the vulnerability had already been reported under an earlier report (#3812532).
+
+Although no bounty was awarded, the submission independently reproduced the same authorization flaw and demonstrated a valid security issue.
+
+### Skills Demonstrated
+
+* API Reconnaissance
+* Authorization Testing
+* Broken Access Control Assessment
+* Cross-Account Access Testing
+* Burp Suite Professional
+* HTTP Request Analysis
+* Vulnerability Documentation
+* Responsible Disclosure
+
+---
+
+# 🧰 Tools
+
+* Burp Suite Professional
+* Burp Repeater
+* Burp Proxy
+* Dirsearch
+* Google Chrome DevTools
+* Manual API Testing
+
+---
+
+# 🎯 Current Research
+
+Currently focused on identifying:
+
+* Broken Access Control
+* IDOR
+* Authorization Logic Issues
+* API Security Vulnerabilities
+* Business Logic Flaws
+
+through public and private bug bounty programs.
+
+---
+
+# 📬 Contact
+
+Email:
+
+**[sad306391@gmail.com](mailto:sad306391@gmail.com)**
+
+---
+
+# 📸 Supporting Evidence
+
+* Kredivo Bounty Confirmation
+* Bali Provincial Government Certificate
+* HackerOne Report Status (Agoda – Duplicate)
+
+Sensitive information has been redacted to comply with responsible disclosure policies.
+
+---
+
+# ⚖ Responsible Disclosure
+
+All testing has been performed only against researcher-controlled accounts or within the scope of authorized vulnerability disclosure programs.
+
+No third-party user data was intentionally accessed, modified, or retained.
+
+Technical exploitation details and sensitive information have been intentionally omitted.
