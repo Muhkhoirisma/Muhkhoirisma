@@ -20,14 +20,16 @@ My research emphasizes understanding application logic rather than relying solel
 
 # 🎯 Research Focus
 
-- Broken Access Control
-- Insecure Direct Object Reference (IDOR)
-- Authorization Testing
-- API Security
-- Business Logic Testing
-- Authentication Analysis
-- REST API Security
-- Cross-Account Access Control
+* Broken Access Control
+* Insecure Direct Object Reference (IDOR)
+* Authorization Testing
+* API Security
+* Business Logic Testing
+* Authentication Analysis
+* REST API Security
+* Cross-Account Access Control
+* Security Misconfiguration
+* Information Disclosure
 
 ---
 
@@ -52,13 +54,14 @@ I prioritize understanding how an application enforces authorization rather than
 
 # 🏆 Achievements
 
-| # | Finding | Result |
-|---|---------|--------|
-| 1 | **IDOR – Kredivo** | ✅ Accepted & Rewarded |
-| 2 | **Unauthenticated Endpoint – Bali Provincial Government** | ✅ Official Certificate of Appreciation |
-| 3 | **NASA Vulnerability Disclosure Program** | ✅ Security Report Submitted |
-| 4 | **Broken Access Control – Agoda (HackerOne)** | ✅ Valid Vulnerability (Duplicate) |
-| 5 | **Broken Access Control / IDOR – NBA Identity (HackerOne)** | ✅ Valid Vulnerability (Duplicate) |
+| # | Finding                                                     | Result                                 |
+| - | ----------------------------------------------------------- | -------------------------------------- |
+| 1 | **IDOR – Kredivo**                                          | ✅ Accepted & Rewarded                  |
+| 2 | **Unauthenticated Endpoint – Bali Provincial Government**   | ✅ Official Certificate of Appreciation |
+| 3 | **NASA Vulnerability Disclosure Program**                   | ✅ Security Report Submitted            |
+| 4 | **Broken Access Control – Agoda (HackerOne)**               | ✅ Valid Vulnerability (Duplicate)      |
+| 5 | **Broken Access Control / IDOR – NBA Identity (HackerOne)** | ✅ Valid Vulnerability (Duplicate)      |
+| 6 | **Exposed Go pprof Debug Endpoint – Supra**                 | 🔎 Reported — Remediation Observed     |
 
 ---
 
@@ -72,8 +75,8 @@ I prioritize understanding how an application enforces authorization rather than
 
 **Category**
 
-- IDOR
-- Broken Access Control
+* IDOR
+* Broken Access Control
 
 ### Summary
 
@@ -85,8 +88,8 @@ Manipulating the object identifier allowed unauthorized access to another user's
 
 ### Result
 
-- ✅ Accepted
-- 💰 Bounty Awarded
+* ✅ Accepted
+* 💰 Bounty Awarded
 
 ---
 
@@ -96,7 +99,7 @@ Manipulating the object identifier allowed unauthorized access to another user's
 
 **Category**
 
-Authentication Bypass
+* Authentication Bypass
 
 ### Summary
 
@@ -108,8 +111,8 @@ Potential unauthorized modification of public UMKM product data.
 
 ### Result
 
-- ✅ Accepted
-- 📜 Official Certificate of Appreciation
+* ✅ Accepted
+* 📜 Official Certificate of Appreciation
 
 ---
 
@@ -119,8 +122,8 @@ Potential unauthorized modification of public UMKM product data.
 
 **Category**
 
-- Broken Access Control
-- Missing Authorization
+* Broken Access Control
+* Missing Authorization
 
 ### Summary
 
@@ -130,11 +133,11 @@ Replacing the polling token belonging to Account A with one belonging to Account
 
 ### Information Exposed
 
-- Booking ID
-- Itinerary ID
-- Booking Status
-- Payment Session URL
-- Self-Service Booking URL
+* Booking ID
+* Itinerary ID
+* Booking Status
+* Payment Session URL
+* Self-Service Booking URL
 
 Testing was performed exclusively using researcher-controlled accounts.
 
@@ -154,9 +157,9 @@ Although no bounty was awarded, the submission independently reproduced the auth
 
 **Category**
 
-- Broken Access Control
-- IDOR
-- Missing Authorization
+* Broken Access Control
+* IDOR
+* Missing Authorization
 
 ### Summary
 
@@ -182,43 +185,116 @@ Although no bounty was awarded, the report independently reproduced the same aut
 
 ---
 
+## Case 5 — Exposed Go pprof Debug Endpoint
+
+**Target:** Supra Security / `monitoring.metrics.manage.supra.com`
+
+**Category**
+
+* Information Disclosure
+* Security Misconfiguration
+* Exposed Debug Endpoint
+
+### Summary
+
+Identified a publicly accessible Go `pprof` debugging interface on a production monitoring host.
+
+The exposed endpoints included:
+
+```text
+/debug/pprof/
+/debug/pprof/goroutine?debug=1
+/debug/pprof/heap
+```
+
+The endpoints were accessible without authentication and exposed runtime profiling information that is generally intended for internal debugging and performance analysis.
+
+### Information Disclosed
+
+The `goroutine` profiling output revealed internal application details including:
+
+* Internal filesystem paths
+* Go function names
+* Application execution flow
+* Internal service structure
+* Technology and framework information
+* InfluxDB-related components
+
+Example of observed information:
+
+```text
+github.com/influxdata/influxdb/v2/query/control.(*Controller).processQueryQueue
+/root/project/query/control/controller.go:443
+```
+
+No credentials, authentication tokens, or third-party user data were intentionally accessed or exfiltrated during testing.
+
+### Methodology
+
+The endpoint was identified through manual security testing and endpoint enumeration.
+
+Testing was limited to safe observation of publicly accessible debugging information.
+
+### Remediation Status
+
+**Status:** Pending Triage / Remediation Observed
+
+After the vulnerability was responsibly disclosed, the previously accessible `pprof` endpoint was rechecked and was no longer publicly accessible.
+
+This indicates that the exposed debug interface has since been restricted or removed. Vendor confirmation of remediation has not yet been received.
+
+### Result
+
+**Security report submitted:** March 19, 2026
+
+**Current status:** Awaiting response
+
+**Severity:** Information Disclosure / Informational or Low
+
+No bounty or official acknowledgment has been received at the time of writing.
+
+---
+
 # 💼 Technical Skills
 
 ## Security Testing
 
-- API Security Testing
-- Authorization Testing
-- Broken Access Control Assessment
-- IDOR Discovery
-- Business Logic Analysis
-- Authentication Analysis
-- REST API Testing
-- Manual Penetration Testing
+* API Security Testing
+* Authorization Testing
+* Broken Access Control Assessment
+* IDOR Discovery
+* Business Logic Analysis
+* Authentication Analysis
+* REST API Testing
+* Manual Penetration Testing
+* Security Misconfiguration Assessment
+* Information Disclosure Testing
 
 ## Security Research
 
-- Endpoint Enumeration
-- HTTP Protocol Analysis
-- API Reconnaissance
-- Cross-Account Testing
-- Root Cause Analysis
-- Vulnerability Validation
-- Responsible Disclosure
+* Endpoint Enumeration
+* HTTP Protocol Analysis
+* API Reconnaissance
+* Cross-Account Testing
+* Root Cause Analysis
+* Vulnerability Validation
+* Responsible Disclosure
+* Debug Endpoint Analysis
 
 ---
 
 # 🧰 Tools
 
-- Burp Suite Professional
-- Burp Proxy
-- Burp Repeater
-- Burp Intruder
-- Google Chrome DevTools
-- Dirsearch
-- ffuf
-- Postman
-- curl
-- Manual API Testing
+* Burp Suite Professional
+* Burp Proxy
+* Burp Repeater
+* Burp Intruder
+* Google Chrome DevTools
+* Dirsearch
+* ffuf
+* Postman
+* curl
+* Manual API Testing
 
 ---
 
@@ -226,14 +302,16 @@ Although no bounty was awarded, the report independently reproduced the same aut
 
 Currently researching:
 
-- Broken Access Control
-- IDOR
-- Authorization Logic Flaws
-- API Security
-- Business Logic Vulnerabilities
-- Object-Level Authorization
-- Session Management
-- Access Control Validation
+* Broken Access Control
+* IDOR
+* Authorization Logic Flaws
+* API Security
+* Business Logic Vulnerabilities
+* Object-Level Authorization
+* Session Management
+* Access Control Validation
+* Security Misconfiguration
+* Information Disclosure
 
 through public and private Vulnerability Disclosure Programs.
 
@@ -241,10 +319,11 @@ through public and private Vulnerability Disclosure Programs.
 
 # 📸 Supporting Evidence
 
-- ✅ Kredivo Bounty Confirmation
-- ✅ Bali Provincial Government Certificate
-- ✅ HackerOne Report Status (Agoda – Duplicate)
-- ✅ HackerOne Report Status (NBA Identity – Duplicate)
+* ✅ Kredivo Bounty Confirmation
+* ✅ Bali Provincial Government Certificate
+* ✅ HackerOne Report Status (Agoda – Duplicate)
+* ✅ HackerOne Report Status (NBA Identity – Duplicate)
+* ✅ Supra Security Report Evidence
 
 Sensitive information has been redacted in accordance with responsible disclosure practices.
 
@@ -254,7 +333,7 @@ Sensitive information has been redacted in accordance with responsible disclosur
 
 All research has been performed only within the scope of authorized Vulnerability Disclosure Programs or Bug Bounty Programs.
 
-Testing has been conducted exclusively using researcher-controlled accounts.
+Testing has been conducted exclusively using researcher-controlled accounts where account-based testing was required.
 
 No third-party user data was intentionally accessed, modified, retained, or disclosed.
 
@@ -273,8 +352,9 @@ My objective is not only to discover vulnerabilities but also to understand thei
 # 📬 Contact
 
 📧 **Email**
-**sad306391@gmail.com**
-HackerOne: hackerone.com/attack10
+**[sad306391@gmail.com](mailto:sad306391@gmail.com)**
+
+**HackerOne:** hackerone.com/attack10
 
 ---
 
