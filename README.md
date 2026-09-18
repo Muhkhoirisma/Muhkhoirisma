@@ -76,12 +76,35 @@ My testing approach follows a structured manual methodology:
 
 ## Case Studies
 
-Detailed write-ups are available here:
+Detailed write-ups are available in the [`case-study/`](./case-study/) directory.
 
-- [Kredivo — IDOR / Broken Access Control](./case-studies/kredivo-idor-broken-access-control.md)
-- [Agoda — Missing Authorization on Booking Status Endpoint](./case-studies/agoda-missing-authorization.md)
-- [NBA Identity — UUID-Based Broken Access Control](./case-studies/nba-identity-idor.md)
-- [Supra — Exposed Go pprof Debug Endpoint](./case-studies/supra-exposed-pprof.md)
+- [Kredivo — IDOR / Broken Access Control on Deprecated API Endpoint](./case-study/kredivo-idor-broken-access-control.md)
+- [Agoda — Missing Authorization on Booking Status Endpoint](./case-study/agoda-missing-authorization.md)
+- NBA Identity — UUID-Based Broken Access Control *(write-up coming soon)*
+- Supra — Exposed Go pprof Debug Endpoint *(write-up coming soon)*
+
+> If the NBA Identity and Supra case study files are already created, replace the “coming soon” lines with direct links:
+>
+> ```md
+> - [NBA Identity — UUID-Based Broken Access Control](./case-study/nba-identity-idor.md)
+> - [Supra — Exposed Go pprof Debug Endpoint](./case-study/supra-exposed-pprof.md)
+> ```
+
+---
+
+## Evidence
+
+Selected findings are supported by redacted evidence where appropriate.
+
+To comply with responsible disclosure practices, sensitive artifacts such as report identifiers, exact endpoints, tokens, cookies, internal paths, user data, and raw response bodies are omitted or sanitized.
+
+Evidence categories referenced in this portfolio include:
+
+- Bounty confirmation
+- Official certificate of appreciation
+- HackerOne report status
+- Remediation observation
+- Sanitized submission evidence
 
 ---
 
@@ -120,16 +143,13 @@ This learning track is intended to strengthen my ability to move from vulnerabil
 
 ---
 
-## Responsible Disclosure Statement
+## Repository Structure
 
-All research mentioned here was conducted only within the scope of authorized Vulnerability Disclosure Programs or Bug Bounty Programs.
-
-Where account-based testing was required, testing was performed exclusively using researcher-controlled accounts. No third-party user data was intentionally accessed, modified, retained, or disclosed. Sensitive technical details have been omitted or sanitized in accordance with responsible disclosure practices.
-
----
-
-## Contact
-
-- Email: `sad306391@gmail.com` atau hapus bagian ini jika ingin lebih privat
-
-> “Every rejected report is feedback. Every duplicate is validation. Every accepted report is the result of continuous learning.”
+```text
+.
+├── README.md
+├── case-study/
+│   ├── kredivo-idor-broken-access-control.md
+│   └── agoda-missing-authorization.md
+├── evidence/
+└── learning-log/
