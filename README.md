@@ -76,7 +76,7 @@ My testing approach follows a structured manual methodology:
 
 ## Case Studies
 
-Detailed write-ups are available in the [`case-study/`](./case-study/) directory.
+Detailed write-ups are available in the [`case-study/`](./case-studies/) directory.
 
 - [Kredivo — IDOR / Broken Access Control on Deprecated API Endpoint](./case-study/kredivo-idor-broken-access-control.md)
 - [Agoda — Missing Authorization on Booking Status Endpoint](./case-study/agoda-missing-authorization.md)
