@@ -30,32 +30,15 @@ My research emphasizes understanding how applications enforce authorization, rat
 
 My testing approach follows a structured manual methodology:
 
-1. **Reconnaissance**  
-   Identify application surface, technologies, endpoints, authentication mechanisms, and possible trust boundaries.
-
-2. **Endpoint Enumeration**  
-   Map active, hidden, legacy, and deprecated API endpoints where possible within authorized scope.
-
-3. **Authentication Analysis**  
-   Understand login flows, session handling, token usage, and identity boundaries.
-
-4. **Authorization Assessment**  
-   Test whether the application correctly enforces permissions for actions and resources.
-
-5. **Cross-Account Validation**  
-   Use controlled accounts to validate horizontal privilege escalation, object-level authorization failures, and data isolation issues.
-
-6. **Business Logic Analysis**  
-   Examine workflows, state transitions, pricing/discount logic, approval flows, and abuse opportunities that scanners usually miss.
-
-7. **Root Cause Analysis**  
-   Explain why the vulnerability exists, not only how it was found.
-
-8. **Impact Validation**  
-   Assess realistic security impact without accessing unauthorized third-party data.
-
-9. **Responsible Disclosure**  
-   Report findings clearly, ethically, and within program rules.
+1. **Reconnaissance** — Identify application surface, technologies, endpoints, authentication mechanisms, and trust boundaries.
+2. **Endpoint Enumeration** — Map active, hidden, legacy, and deprecated API endpoints within authorized scope.
+3. **Authentication Analysis** — Understand login flows, session handling, token usage, and identity boundaries.
+4. **Authorization Assessment** — Test whether the application correctly enforces permissions for actions and resources.
+5. **Cross-Account Validation** — Use controlled accounts to validate horizontal privilege escalation and data isolation issues.
+6. **Business Logic Analysis** — Examine workflows, state transitions, and abuse opportunities that scanners usually miss.
+7. **Root Cause Analysis** — Explain why the vulnerability exists, not only how it was found.
+8. **Impact Validation** — Assess realistic security impact without accessing unauthorized third-party data.
+9. **Responsible Disclosure** — Report findings clearly, ethically, and within program rules.
 
 ---
 
@@ -70,41 +53,15 @@ My testing approach follows a structured manual methodology:
 | 5 | Broken Access Control / IDOR | NBA Identity via HackerOne | Valid Vulnerability, Duplicate |
 | 6 | Exposed Go pprof Debug Endpoint | Supra Security | Reported, Remediation Observed, Pending Triage |
 
-> Note: Duplicate submissions still represent independent reproduction of confirmed authorization weaknesses. Where applicable, technical details are sanitized to comply with responsible disclosure policies.
+> Note: Duplicate submissions still represent independent reproduction of confirmed authorization weaknesses. Technical details are sanitized to comply with responsible disclosure policies.
 
 ---
 
 ## Case Studies
 
-Detailed write-ups are available in the [`case-study/`](./case-studies/) directory.
+Detailed write-ups are available in the [`case-studies/`](./case-studies/) directory.
 
-- [Kredivo — IDOR / Broken Access Control on Deprecated API Endpoint](./case-study/kredivo-idor-broken-access-control.md)
-- [Agoda — Missing Authorization on Booking Status Endpoint](./case-study/agoda-missing-authorization.md)
-- NBA Identity — UUID-Based Broken Access Control *(write-up coming soon)*
-- Supra — Exposed Go pprof Debug Endpoint *(write-up coming soon)*
-
-> If the NBA Identity and Supra case study files are already created, replace the “coming soon” lines with direct links:
->
-> ```md
-> - [NBA Identity — UUID-Based Broken Access Control](./case-study/nba-identity-idor.md)
-> - [Supra — Exposed Go pprof Debug Endpoint](./case-study/supra-exposed-pprof.md)
-> ```
-
----
-
-## Evidence
-
-Selected findings are supported by redacted evidence where appropriate.
-
-To comply with responsible disclosure practices, sensitive artifacts such as report identifiers, exact endpoints, tokens, cookies, internal paths, user data, and raw response bodies are omitted or sanitized.
-
-Evidence categories referenced in this portfolio include:
-
-- Bounty confirmation
-- Official certificate of appreciation
-- HackerOne report status
-- Remediation observation
-- Sanitized submission evidence
+- [Kredivo — IDOR / Broken Access Control on Deprecated API Endpoint](./case-studies/kredivo-idor-broken-access-control.md)
 
 ---
 
@@ -122,34 +79,23 @@ I am actively expanding my research into more enterprise-relevant authorization 
 - Cloud-native API attack surfaces
 - MITRE ATT&CK-informed application security testing
 
-This learning track is intended to strengthen my ability to move from vulnerability discovery toward broader offensive security assessment thinking.
-
 ---
 
 ## Tools and Techniques
 
-- Burp Suite Professional
-- Burp Proxy / Repeater / Intruder
-- Chrome DevTools
-- Postman
-- curl
-- ffuf
-- Dirsearch
-- Manual HTTP/API testing
-- Controlled account comparison testing
-- Endpoint enumeration
-- Request/response diffing
-- Authorization boundary mapping
+Burp Suite Professional (Proxy / Repeater / Intruder) · Chrome DevTools · Postman · curl · ffuf · Dirsearch · Manual HTTP/API testing · Controlled account comparison testing · Endpoint enumeration · Request/response diffing · Authorization boundary mapping
 
 ---
 
-## Repository Structure
+## Responsible Disclosure Statement
 
-```text
-.
-├── README.md
-├── case-study/
-│   ├── kredivo-idor-broken-access-control.md
-│   └── agoda-missing-authorization.md
-├── evidence/
-└── learning-log/
+All research mentioned here was conducted only within the scope of authorized Vulnerability Disclosure Programs or Bug Bounty Programs. Where account-based testing was required, testing was performed exclusively using researcher-controlled accounts. No third-party user data was intentionally accessed, modified, retained, or disclosed. Sensitive technical details have been omitted or sanitized in accordance with responsible disclosure practices.
+
+---
+
+## Contact
+
+- HackerOne: [hackerone.com/attack10](https://hackerone.com/attack10)
+- Other contact details available upon request.
+
+> “Every rejected report is feedback. Every duplicate is validation. Every accepted report is the result of continuous learning.”
