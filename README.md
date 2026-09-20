@@ -63,7 +63,7 @@ My testing approach follows a structured manual methodology:
 
 | # | Finding | Platform / Target | Result |
 |---|---|---|---|
-| 1 | **Cross-Vendor Guardrail Inconsistency (Grok 4.6 & Claude Sonnet 5)** | **0DIN by Mozilla** | **Submitted (First Blood Achievement)** |
+| 1 | **Cross-Vendor Guardrail Inconsistency (Grok 4.6 & Claude Sonnet 5 - Antrhopic)** | **0DIN by Mozilla** | **Submitted (First Blood Achievement)** |
 | 2 | IDOR / Broken Access Control | Kredivo | Accepted & Rewarded |
 | 3 | Unauthenticated Administrative Functionality | Bali Provincial Government | Official Certificate of Appreciation |
 | 4 | Security Research Submission | NASA Vulnerability Disclosure Program | Report Submitted |
